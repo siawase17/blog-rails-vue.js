@@ -2,6 +2,15 @@
     <div class="category-list">
         <p>Category List</p>
         <ul>
+            <li>
+                <!-- 전체보기 버튼 -->
+                <button
+                    @click="selectCategory(null)"
+                    :class="{ selected: selectedCategoryId === null }"
+                >
+                    전체보기
+                </button>
+            </li>
             <li v-for="category in categories" :key="category.id">
                 <button
                     @click="selectCategory(category.id)"
