@@ -13,6 +13,7 @@ const routes = [
     path: '/post/:id',
     name: 'PostDetail',
     component: PostDetail,
+    props: true,
   },
   {
     path: '/login',

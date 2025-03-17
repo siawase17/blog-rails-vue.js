@@ -1,6 +1,42 @@
 <script setup>
-import { RouterLink } from 'vue-router';
-import Button from './Button.vue'
+import { ref, onMounted, watch } from 'vue';
+import Button from './Button.vue';
+
+// token을 ref로 관리
+const token = ref(localStorage.getItem('authToken'));
+
+// 토큰 상태에 따라 로컬스토리지를 업데이트
+const updateToken = () => {
+    token.value = localStorage.getItem('authToken'); // 토큰 값 갱신
+};
+
+// 로그아웃 처리
+const logout = () => {
+    const confirmLogout = window.confirm('ログアウトしますか？');
+    if (confirmLogout) {
+        localStorage.removeItem('authToken'); // 로그아웃 시 로컬스토리지에서 토큰 삭제
+        token.value = null; // Vue 상태에서 토큰 비우기
+    }
+};
+
+// 컴포넌트가 처음 마운트될 때 token 업데이트
+onMounted(() => {
+    updateToken();
+});
+
+// token 상태 변화를 감지하여 UI 업데이트
+watch(token, (newToken) => {
+    if (!newToken) {
+        // 토큰이 null이면 로그인 버튼 표시
+        console.log('로그아웃 상태');
+    } else {
+        // 토큰이 있으면 로그아웃 버튼 표시
+        console.log('로그인 상태');
+    }
+});
+
+// 로컬스토리지가 변경될 때 자동으로 상태 업데이트
+window.addEventListener('storage', updateToken);
 </script>
 
 <template>
@@ -14,8 +50,8 @@ import Button from './Button.vue'
         </div>
 
         <div class="auth-buttons">
-            <Button label="Login" to="/login" />
-            <Button label="Logout" to="/logout" />
+            <Button v-if="!token" label="Login" to="/login" />
+            <Button v-if="token" label="Logout" @click="logout" />
         </div>
     </header>
 </template>

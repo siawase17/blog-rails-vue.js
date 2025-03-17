@@ -4,12 +4,11 @@ import Header from './components/Header.vue';
 
 <template>
   <Header></Header>
-  <RouterView />
+  <RouterView class="page-content" />
 </template>
 
 <style scoped>
-html, body {
-  margin: 0;
-  padding: 0;
+.page-content {
+  padding: 50px 90px;
 }
 </style>
