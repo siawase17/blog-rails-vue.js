@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-
         <CategoryList :categories="categories" :selectedCategoryId="selectedCategoryId"
             @category-selected="updateCategory" />
         <div class="right">
@@ -63,5 +62,11 @@ export default {
 
 .right {
     flex: 4;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
 }
 </style>

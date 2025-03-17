@@ -8,7 +8,7 @@
                     @click="selectCategory(null)"
                     :class="{ selected: selectedCategoryId === null }"
                 >
-                    전체보기
+                    전체
                 </button>
             </li>
             <li v-for="category in categories" :key="category.id">
@@ -51,6 +51,9 @@ p {
 .category-list ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .category-list li {

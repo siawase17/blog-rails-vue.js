@@ -74,6 +74,7 @@ p {
 .container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0;
     border-bottom: 1px solid #cccccca9;
     padding-bottom: 5px;
@@ -97,5 +98,32 @@ p {
     display: flex;
     align-items: baseline;
     gap: 10px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .action-buttons {
+        width: 100%;
+        justify-content: flex-start;
+    }
 }
 </style>
