@@ -1,5 +1,6 @@
 module Api
   class PostsController < ApplicationController
+    before_action :authenticate_user, only: [:create, :update, :destroy]
     before_action :set_post, only: [ :show, :update, :destroy ]
 
     # 게시글 목록 조회

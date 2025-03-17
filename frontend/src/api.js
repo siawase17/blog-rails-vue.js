@@ -4,7 +4,6 @@ const api = axios.create({
     baseURL: 'http://localhost:3000/api',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('authToken')}`, // 토큰을 헤더에 포함
     },
 });
 
@@ -32,7 +31,7 @@ export const fetchPostDetail = async (id) => {
 
 export const loginUser = async (email, password) => {
     try {
-        const response = await api.post('/login', { email, password }); // 서버로 로그인 요청
+        const response = await api.post('/login', { email, password });
         return response.data.token;
     } catch (error) {
         console.error('로그인 실패:', error);
