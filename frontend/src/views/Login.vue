@@ -3,14 +3,14 @@
         <h1>로그인</h1>
         <form @submit.prevent="login">
             <div>
-                <label for="email">이메일</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" v-model="email" required />
             </div>
             <div>
-                <label for="password">비밀번호</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" v-model="password" required />
             </div>
-            <button type="submit">로그인</button>
+            <button type="submit">Login</button>
         </form>
     </div>
 </template>
@@ -18,7 +18,7 @@
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { loginUser } from '@/api'; // 로그인 API 호출 함수
+import { loginUser } from '@/api';
 
 export default {
     name: 'Login',
@@ -30,11 +30,11 @@ export default {
 
         const login = async () => {
             try {
-                const token = await loginUser(email.value, password.value); // 로그인 시 API 호출
-                localStorage.setItem('authToken', token); // 받은 토큰을 로컬 스토리지에 저장
-                router.push('/'); // 홈 화면으로 리디렉션
+                const token = await loginUser(email.value, password.value); 
+                localStorage.setItem('authToken', token);
+                router.push('/'); 
             } catch (error) {
-                errorMessage.value = '로그인 실패: ' + error.message; // 실패 시 에러 메시지 출력
+                errorMessage.value = '로그인 실패: ' + error.message;
             }
         };
 
@@ -49,13 +49,12 @@ export default {
 </script>
 
 <style scoped>
-/* 로그인 폼 스타일 */
 .login {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 50px;
+    border: 1px solid #edede9;
+    border-radius: 15px;
 }
 
 input {
@@ -68,15 +67,16 @@ input {
 
 button {
     width: 100%;
+    margin-top: 20px;
     padding: 10px;
-    background-color: #28a745;
+    background-color: #d6ccc2;
     color: white;
     border: none;
     border-radius: 5px;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #d5bdaf;
 }
 
 .error-message {
