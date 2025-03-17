@@ -18,6 +18,10 @@ export default {
         selectedCategoryId: {
             type: [String, Number],
             default: null
+        },
+        searchQuery: {
+            type: String,
+            default: ''
         }
     },
     data() {
@@ -27,10 +31,13 @@ export default {
     },
     computed: {
         filteredPosts() {
-            if (this.selectedCategoryId) {
-                return this.posts.filter(post => post.category_id === this.selectedCategoryId);
-            }
-            return this.posts;
+            return this.posts.filter(post => {
+                const matchesCategory = this.selectedCategoryId ? post.category_id === this.selectedCategoryId : true;
+                const matchesSearch = this.searchQuery
+                    ? post.title.includes(this.searchQuery) || post.content.includes(this.searchQuery)
+                    : true;
+                return matchesCategory && matchesSearch;
+            });
         }
     },
     async created() {

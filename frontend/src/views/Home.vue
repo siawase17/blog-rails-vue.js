@@ -1,25 +1,33 @@
 <template>
     <div class="container">
-        <CategoryList :categories="categories" :selectedCategoryId="selectedCategoryId" @category-selected="updateCategory" />
-        <PostList :selectedCategoryId="selectedCategoryId" />
+
+        <CategoryList :categories="categories" :selectedCategoryId="selectedCategoryId"
+            @category-selected="updateCategory" />
+        <div class="right">
+            <SearchBar @search="updateSearchQuery" />
+            <PostList :selectedCategoryId="selectedCategoryId" :searchQuery="searchQuery" />
+        </div>
     </div>
 </template>
 
 <script>
 import PostList from '@/components/PostList.vue';
 import CategoryList from '@/components/CategoryList.vue';
+import SearchBar from '@/components/SearchBar.vue';
 import { fetchCategories } from '@/api';
 
 export default {
     name: 'Home',
     components: {
         PostList,
-        CategoryList
+        CategoryList,
+        SearchBar
     },
     data() {
         return {
             categories: [],
             selectedCategoryId: null,
+            searchQuery: ''
         };
     },
     async created() {
@@ -33,6 +41,9 @@ export default {
     methods: {
         updateCategory(id) {
             this.selectedCategoryId = id;
+        },
+        updateSearchQuery(query) {
+            this.searchQuery = query;
         }
     }
 };
@@ -50,7 +61,7 @@ export default {
     flex: 1;
 }
 
-.post-list {
+.right {
     flex: 4;
 }
 </style>

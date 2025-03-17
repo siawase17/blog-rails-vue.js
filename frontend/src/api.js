@@ -75,6 +75,27 @@ export const deletePost = async (id) => {
     }
 };
 
+// 카테고리 생성 함수
+export const createCategory = async (categoryData) => {
+    try {
+        const response = await api.post('/categories', { category: categoryData });
+        return response.data;
+    } catch (error) {
+        console.error('카테고리 생성 중 오류:', error);
+        throw error;
+    }
+};
+
+// 카테고리 삭제 함수
+export const deleteCategory = async (id) => {
+    try {
+        await api.delete(`/categories/${id}`);
+    } catch (error) {
+        console.error('카테고리 삭제 중 오류:', error);
+        throw error;
+    }
+};
+
 export const loginUser = async (email, password) => {
     try {
         const response = await api.post('/login', { email, password });
