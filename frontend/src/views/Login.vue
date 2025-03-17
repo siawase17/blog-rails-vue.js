@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <h1>로그인</h1>
+        <h1>Login</h1>
         <form @submit.prevent="login">
             <div>
                 <label for="email">Email</label>
@@ -49,6 +49,10 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+    margin-bottom: 50px;
+}
+
 .login {
     max-width: 600px;
     margin: 50px auto;
@@ -63,6 +67,12 @@ input {
     margin: 10px 0;
     border-radius: 5px;
     border: 1px solid #ccc;
+}
+
+input:-webkit-autofill {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
 }
 
 button {

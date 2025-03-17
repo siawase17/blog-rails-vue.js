@@ -3,7 +3,7 @@
         <input
             type="text"
             v-model="searchQuery"
-            placeholder="검색어를 입력하세요"
+            placeholder="検索語を入力してください"
             @input="emitSearch"
             @keypress.enter="emitSearch"
         />

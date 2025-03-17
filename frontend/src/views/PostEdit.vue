@@ -3,7 +3,7 @@
         <form @submit.prevent="updatePost">
             <input type="text" id="title" v-model="title" required />
             <div class="category-container">
-                <label for="category">카테고리</label>
+                <label for="category">Category</label>
                 <select v-model="selectedCategory" required>
                     <option v-for="category in categories" :key="category.id" :value="category.id">
                         {{ category.name }}
@@ -11,8 +11,8 @@
                 </select>
             </div>
             <textarea id="content" v-model="content" required></textarea>
-            <button type="submit">수정</button>
-            <button type="button" @click="cancelEdit">취소</button>
+            <button type="submit">修正</button>
+            <button type="button" @click="cancelEdit">削除</button>
         </form>
         <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
     </div>

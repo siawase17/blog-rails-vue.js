@@ -7,8 +7,8 @@
                 <span class="category">{{ post.category.name }}</span>
             </div>
             <div class="action-buttons">
-                <Button label="수정" :to="`/post/edit/${post.id}`" />
-                <Button label="삭제" @click="deletePost" />
+                <Button label="修正" :to="`/post/edit/${post.id}`" />
+                <Button label="削除" @click="deletePost" />
             </div>
         </div>
         <p>{{ post.content }}</p>
@@ -55,7 +55,7 @@ export default {
             }
         },
         formatDate(date) {
-            return format(new Date(date), 'yyyy년 MM월 dd일', { locale: ko });
+            return format(new Date(date), 'yyyy年 MM月 dd日', { locale: ko });
         }
     },
 };

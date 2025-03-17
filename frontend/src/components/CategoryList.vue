@@ -8,7 +8,7 @@
                     @click="selectCategory(null)"
                     :class="{ selected: selectedCategoryId === null }"
                 >
-                    전체
+                    全体
                 </button>
             </li>
             <li v-for="category in categories" :key="category.id">

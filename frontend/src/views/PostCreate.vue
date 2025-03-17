@@ -1,17 +1,18 @@
 <template>
     <div class="create-post">
         <form @submit.prevent="createPost">
-            <input type="text" id="title" v-model="title" placeholder="제목을 입력하세요" required />
+            <input type="text" id="title" v-model="title" placeholder="タイトルを入力してください" required />
             <div class="category-container">
-                <label for="category">카테고리</label>
+                <label for="category">Category</label>
                 <select v-model="selectedCategory" required>
                     <option v-for="category in categories" :key="category.id" :value="category.id">
                         {{ category.name }}
                     </option>
                 </select>
             </div>
-            <textarea id="content" v-model="content" placeholder="내용을 입력하세요" required></textarea>
-            <button type="submit">글 작성</button>
+            <textarea id="content" v-model="content" placeholder="内容を入力してください" required></textarea>
+            <button type="submit">作成</button>
+            <button type="button" @click="cancelEdit">削除</button>
         </form>
 
         <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
@@ -21,6 +22,7 @@
 <script>
 import { ref, onMounted } from 'vue';
 import { fetchCategories, createPost } from '@/api';
+import { useRouter, useRoute } from 'vue-router';
 
 export default {
     name: 'PostCreate',
@@ -32,6 +34,16 @@ export default {
             categories: [],
             errorMessage: '',
         };
+    },
+    setup() {
+        const router = useRouter();
+        const route = useRoute();
+
+        const cancelEdit = () => {
+            router.push('/');
+        };
+
+        return { cancelEdit };
     },
     async created() {
         try {
@@ -109,6 +121,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 button:hover {

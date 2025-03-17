@@ -45,7 +45,7 @@ window.addEventListener('storage', updateToken);
 
         <div class="auth-buttons">
             <Button v-if="!token" label="Login" to="/login" />
-            <Button v-if="token" label="글 작성" to="/create" />
+            <Button v-if="token" label="投稿" to="/create" />
             <Button v-if="token" label="Logout" @click="logout" />
         </div>
     </header>
