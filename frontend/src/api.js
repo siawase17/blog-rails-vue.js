@@ -53,6 +53,17 @@ export const createPost = async (postData) => {
     }
 };
 
+// 게시글 수정 함수
+export const updatePost = async (id, postData) => {
+    try {
+        const response = await api.patch(`/posts/${id}`, { post: postData });
+        return response.data;
+    } catch (error) {
+        console.error('게시글 수정 중 오류가 발생했습니다:', error);
+        throw error;
+    }
+};
+
 // 게시글 삭제 함수
 export const deletePost = async (id) => {
     try {

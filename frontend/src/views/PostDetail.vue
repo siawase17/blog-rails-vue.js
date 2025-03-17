@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { fetchPostDetail } from '@/api';
+import { fetchPostDetail, deletePost } from '@/api';
 import Button from '@/components/Button.vue';
 import { useRouter } from 'vue-router';
 import { format } from 'date-fns';
