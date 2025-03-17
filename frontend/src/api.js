@@ -38,3 +38,15 @@ export const loginUser = async (email, password) => {
         throw new Error('로그인 실패');
     }
 };
+
+export const fetchCategories = async () => {
+    try {
+        const response = await api.get('/categories');
+        console.log(response.data)
+        return response.data;
+        
+    } catch (error) {
+        console.error('API error:', error);
+        throw error;
+    }
+};

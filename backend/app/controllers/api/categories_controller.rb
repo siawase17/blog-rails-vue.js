@@ -1,5 +1,6 @@
 module Api
   class CategoriesController < ApplicationController
+    before_action :authenticate_user, only: [:create, :update, :destroy]
     before_action :set_category, only: [ :show, :update, :destroy ]
 
     def index
