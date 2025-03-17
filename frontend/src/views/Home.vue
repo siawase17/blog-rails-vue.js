@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Button label="글 작성" to="/create" />
         <PostList />
     </div>
 </template>

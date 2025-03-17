@@ -9,6 +9,6 @@ import Header from './components/Header.vue';
 
 <style scoped>
 .page-content {
-  padding: 50px 90px;
+  padding: 50px 200px;
 }
 </style>
