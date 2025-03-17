@@ -1,0 +1,65 @@
+# Ignore bundler config.
+.bundle
+
+# Ignore all environment files.
+.env*
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+# Ignore public assets
+/public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+# Ignore system-specific files
+*.rbc
+/.config
+/coverage/
+InstalledFiles
+/pkg/
+.spec/reports/
+.spec/examples.txt
+/test/tmp/
+.test/version_tmp/
+.tmp/
+.byebug_history
+
+## Specific to RubyMotion:
+.dat*
+.repl_history
+build/
+*.bridgesupport
+build-iPhoneOS/
+build-iPhoneSimulator/
+
+## Documentation cache and generated files:
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+
+# Ignore Gemfile.lock in libraries/gems (but keep it for apps)
+Gemfile.lock
+
+# Ignore rvm-related files
+.rvmrc
+
+# Ignore RuboCop remote config files
+.rubocop-https?--*
