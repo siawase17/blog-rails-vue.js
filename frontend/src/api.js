@@ -7,6 +7,19 @@ const api = axios.create({
     },
 });
 
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
 // 게시글 목록을 가져오는 함수
 export const fetchPosts = async () => {
     try {
@@ -25,6 +38,17 @@ export const fetchPostDetail = async (id) => {
         return response.data;
     } catch (error) {
         console.error('API error:', error);
+        throw error;
+    }
+};
+
+// 게시글 작성 함수
+export const createPost = async (postData) => {
+    try {
+        const response = await api.post('/posts', { post: postData });
+        return response.data;
+    } catch (error) {
+        console.error('게시글 작성 중 오류가 발생했습니다:', error);
         throw error;
     }
 };
