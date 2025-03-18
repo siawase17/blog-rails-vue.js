@@ -37,7 +37,7 @@
   - fetchPosts() を利用し GET /api/posts でデータ取得
 - 記事詳細 (PostDetail.vue)
   - fetchPostDetail(id) を利用し GET /api/posts/:id でデータ取得
-- 記事の削除ボタン (deletePost(id)) を実装し DELETE /api/posts/:id を呼び出し
+- 記事の削除 (deletePost(id)) を実装し DELETE /api/posts/:id を呼び出し
 - 記事作成 (PostCreate.vue)
   - createPost(postData) を利用し POST /api/posts で新規投稿
   - タイトル・本文・カテゴリを入力し、ボタンを押すと記事が作成される
